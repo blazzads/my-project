@@ -1,0 +1,36 @@
+{
+  "recommendations": [
+    // Essential untuk Next.js Development
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    
+    // Productivity & Code Quality
+    "ms-vscode.vscode-json",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-live-server",
+    
+    // Git & Collaboration
+    "eamodio.gitlens",
+    "ms-vscode.vscode-github",
+    
+    // Database & API
+    "ms-vscode.vscode-thunder-client",
+    "ckolkman.vscode-postgres",
+    
+    // File Management
+    "stkb.rewrap",
+    "gruntfuggly.todo-tree",
+    "yzhang.markdown-all-in-one",
+    
+    // Themes
+    "zhuangtongfa.material-theme",
+    "pkief.material-icon-theme",
+    
+    // Optional AI Assistants
+    "github.copilot",
+    "ms-vscode.intellicode-api-usage-examples"
+  ]
+}
