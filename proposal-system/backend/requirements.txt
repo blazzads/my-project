@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+litefs
+python-dotenv
+pydantic
+sqlite-utils

@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
+database/*.db
+database/*.db-wal
+database/*.db-shm
+logs/
+litefs-data/
