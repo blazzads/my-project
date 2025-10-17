@@ -1,0 +1,1464 @@
+/**
+ * Enterprise Proposal System - Global Styles
+ * Tailwind CSS Configuration with Custom Components
+ *
+ * Features:
+ * - Complete Tailwind CSS setup
+ * - Custom component styles
+ * - Responsive design utilities
+ * - Dark mode support
+ * - Animation and transitions
+ * - Print styles for reporting
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  /* Color Palette */
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+
+  --secondary-50: #f8fafc;
+  --secondary-100: #f1f5f9;
+  --secondary-200: #e2e8f0;
+  --secondary-300: #cbd5e1;
+  --secondary-400: #94a3b8;
+  --secondary-500: #64748b;
+  --secondary-600: #475569;
+  --secondary-700: #334155;
+  --secondary-800: #1e293b;
+  --secondary-900: #0f172a;
+
+  --success-50: #f0fdf4;
+  --success-100: #dcfce7;
+  --success-200: #bbf7d0;
+  --success-300: #86efac;
+  --success-400: #4ade80;
+  --success-500: #22c55e;
+  --success-600: #16a34a;
+  --success-700: #15803d;
+  --success-800: #166534;
+  --success-900: #14532d;
+
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-200: #fde68a;
+  --warning-300: #fcd34d;
+  --warning-400: #fbbf24;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  --warning-800: #92400e;
+  --warning-900: #78350f;
+
+  --error-50: #fef2f2;
+  --error-100: #fee2e2;
+  --error-200: #fecaca;
+  --error-300: #fca5a5;
+  --error-400: #f87171;
+  --error-500: #ef4444;
+  --error-600: #dc2626;
+  --error-700: #b91c1c;
+  --error-800: #991b1b;
+  --error-900: #7f1d1d;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* Typography */
+  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1f2937;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-tertiary: #9ca3af;
+    --border-primary: #374151;
+    --border-secondary: #4b5563;
+  }
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: #ffffff;
+  color: #1f2937;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  .page-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Custom component styles */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors var(--transition-normal);
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-secondary {
+  @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+}
+
+.btn-success {
+  @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+}
+
+.btn-warning {
+  @apply bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+
+.btn-outline {
+  @apply border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:ring-blue-500 focus:border-blue-500;
+}
+
+.btn-sm {
+  @apply px-3 py-1.5 text-xs;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-base;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-lg shadow-md border border-gray-200;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-gray-200;
+}
+
+.card-body {
+  @apply px-6 py-4;
+}
+
+.card-footer {
+  @apply px-6 py-4 border-t border-gray-200;
+}
+
+/* Form styles */
+.form-input {
+  @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors var(--transition-normal);
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.form-help {
+  @apply text-gray-500 text-sm mt-1;
+}
+
+/* Table styles */
+.table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+.table-header {
+  @apply bg-gray-50;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-secondary {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-danger {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Alert styles */
+.alert {
+  @apply p-4 rounded-md border;
+}
+
+.alert-info {
+  @apply bg-blue-50 border-blue-200 text-blue-800;
+}
+
+.alert-success {
+  @apply bg-green-50 border-green-200 text-green-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-50 border-yellow-200 text-yellow-800;
+}
+
+.alert-error {
+  @apply bg-red-50 border-red-200 text-red-800;
+}
+
+/* Modal styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+.modal-container {
+  @apply bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4;
+}
+
+.modal-header {
+  @apply px-6 py-4 border-b border-gray-200 flex items-center justify-between;
+}
+
+.modal-body {
+  @apply px-6 py-4;
+}
+
+.modal-footer {
+  @apply px-6 py-4 border-t border-gray-200 flex items-center justify-end space-x-3;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300 border-t-blue-600;
+}
+
+.spinner-sm {
+  @apply h-4 w-4 border-2;
+}
+
+.spinner-md {
+  @apply h-8 w-8 border-2;
+}
+
+.spinner-lg {
+  @apply h-12 w-12 border-4;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors var(--transition-normal);
+}
+
+.nav-link.active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+/* Sidebar styles */
+.sidebar {
+  @apply bg-white shadow-lg h-full flex flex-col;
+}
+
+.sidebar-item {
+  @apply flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors var(--transition-normal);
+}
+
+.sidebar-item.active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+/* Dashboard styles */
+.dashboard-card {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+}
+
+.dashboard-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.dashboard-metric {
+  @apply text-center;
+}
+
+.dashboard-value {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.dashboard-label {
+  @apply text-sm text-gray-500 mt-1;
+}
+
+/* Kanban board styles */
+.kanban-board {
+  @apply flex gap-4 overflow-x-auto pb-4;
+}
+
+.kanban-lane {
+  @apply bg-gray-50 rounded-lg min-w-72;
+}
+
+.kanban-lane-header {
+  @apply px-4 py-3 border-b border-gray-200 flex items-center justify-between;
+}
+
+.kanban-lane-content {
+  @apply p-4 min-h-96;
+}
+
+.kanban-card {
+  @apply bg-white rounded-md shadow-sm border border-gray-200 p-4 mb-3 cursor-move transition-shadow var(--transition-normal);
+}
+
+.kanban-card:hover {
+  @apply shadow-lg;
+}
+
+/* Chart styles */
+.chart-container {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+}
+
+.chart-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+/* Progress bar styles */
+.progress {
+  @apply w-full bg-gray-200 rounded-full h-2;
+}
+
+.progress-bar {
+  @apply h-2 rounded-full transition-all duration-300 ease-in-out;
+}
+
+.progress-bar-success {
+  @apply bg-green-500;
+}
+
+.progress-bar-warning {
+  @apply bg-yellow-500;
+}
+
+.progress-bar-danger {
+  @apply bg-red-500;
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply absolute z-10 px-3 py-2 text-sm text-white bg-gray-900 rounded-md shadow-lg opacity-0 pointer-events-none transition-opacity var(--transition-normal);
+}
+
+.tooltip.show {
+  @apply opacity-100 pointer-events-auto;
+}
+
+/* Utility classes */
+.text-gradient {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.bg-gradient {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600;
+}
+
+.border-gradient {
+  @apply border-gradient-to-r from-blue-600 to-purple-600;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .mobile-hidden {
+    @apply hidden;
+  }
+
+  .mobile-block {
+    @apply block;
+  }
+
+  .mobile-flex {
+    @apply flex;
+  }
+}
+
+@media (min-width: 641px) {
+  .sm-hidden {
+    @apply hidden;
+  }
+
+  .sm-block {
+    @apply block;
+  }
+
+  .sm-flex {
+    @apply flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .md-hidden {
+    @apply hidden;
+  }
+
+  .md-block {
+    @apply block;
+  }
+
+  .md-flex {
+    @apply flex;
+  }
+}
+
+@media (min-width: 1280px) {
+  .lg-hidden {
+    @apply hidden;
+  }
+
+  .lg-block {
+    @apply block;
+  }
+
+  .lg-flex {
+    @apply flex;
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+}
+
+/* Print utilities */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Dark mode support */
+.dark {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark .card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .form-input {
+  @apply bg-gray-700 border-gray-600 text-white placeholder-gray-400;
+}
+
+.dark .table-header {
+  @apply bg-gray-700;
+}
+
+.dark .table-striped tbody tr:nth-child(even) {
+  @apply bg-gray-700;
+}
+
+/* Enterprise-specific styles */
+.enterprise-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.enterprise-border {
+  border: 1px solid #e5e7eb;
+}
+
+.enterprise-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Custom component overrides for proposal system */
+.proposal-status-draft {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.proposal-status-review {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.proposal-status-approved {
+  @apply bg-green-100 text-green-800;
+}
+
+.proposal-status-submitted {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.proposal-status-won {
+  @apply bg-green-100 text-green-800;
+}
+
+.proposal-status-lost {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Priority indicators */
+.priority-low {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.priority-medium {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.priority-high {
+  @apply bg-orange-100 text-orange-800;
+}
+
+.priority-urgent {
+  @apply bg-red-100 text-red-800;
+}
+
+.priority-critical {
+  @apply bg-purple-100 text-purple-800;
+}
+
+/* Role-based styling */
+.role-admin {
+  @apply border-red-200 bg-red-50;
+}
+
+.role-sales {
+  @apply border-blue-200 bg-blue-50;
+}
+
+.role-po {
+  @apply border-green-200 bg-green-50;
+}
+
+.role-bs {
+  @apply border-purple-200 bg-purple-50;
+}
+
+.role-bidding {
+  @apply border-orange-200 bg-orange-50;
+}
+
+/* Responsive grid system */
+.grid-responsive {
+  @apply grid grid-cols-1 gap-4;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    @apply grid-cols-3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-responsive {
+    @apply grid-cols-4;
+  }
+}
+```
+
+### **5.4 Main Dashboard Page (Bab 7 & 13)**
+
+```
+</think>
+<file_path>
+my-project\enterprise-proposal-system\frontend\src\app\page.tsx
+</file_path>
+
+<edit_description>
+Create main dashboard page with pipeline, funnel, KPI cards, and drill-down capabilities
+</edit_description>
+
+```tsx
+/**
+ * Enterprise Proposal System - Main Dashboard
+ * Next.js 14 with TypeScript & Tailwind CSS
+ *
+ * Features:
+ * - Pipeline & Funnel Visualization (Bab 7 & 13)
+ * - KPI Cards with Real-time Updates
+ * - Interactive Charts with Drill-down
+ * - 17 Role-based Dashboard Views
+ * - Real-time WebSocket Updates
+ * - Analytics Integration
+ */
+
+import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import {
+  LineChart,
+  Line,
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from 'recharts';
+
+// Import components
+import { Layout } from '@/components/layout/Layout';
+import { KPICard } from '@/components/dashboard/KPICard';
+import { PipelineChart } from '@/components/charts/PipelineChart';
+import { FunnelChart } from '@/components/charts/FunnelChart';
+import { TeamPerformanceChart } from '@/components/charts/TeamPerformanceChart';
+import { RevenueTrendChart } from '@/components/charts/RevenueTrendChart';
+import { ProposalTable } from '@/components/proposals/ProposalTable';
+import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { QuickActions } from '@/components/dashboard/QuickActions';
+import { useWebSocket } from '@/providers/WebSocketProvider';
+import { useAuth } from '@/providers/AuthProvider';
+
+// Types
+type DashboardMetrics = {
+  pipeline: {
+    total: number;
+    submitted: number;
+    won: number;
+    lost: number;
+    winRate: number;
+  };
+  funnel: Array<{
+    status: string;
+    count: number;
+  }>;
+  revenue: {
+    totalRevenue: number;
+    avgValue: number;
+    totalValuePipeline: number;
+  };
+  teamPerformance: Array<{
+    role: string;
+    totalProposals: number;
+    wonProposals: number;
+    avgCompliance: number;
+  }>;
+  wps: number;
+};
+
+type KPIData = {
+  title: string;
+  value: number | string;
+  change?: number;
+  changeType?: 'increase' | 'decrease';
+  icon: string;
+  color: string;
+  drillDownPath?: string;
+};
+
+type ChartData = {
+  month: string;
+  proposals: number;
+  revenue: number;
+  won: number;
+};
+
+const COLORS = {
+  primary: '#3B82F6',
+  success: '#10B981',
+  warning: '#F59E0B',
+  danger: '#EF4444',
+  info: '#6366F1',
+  purple: '#8B5CF6',
+  pink: '#EC4899',
+  gray: '#6B7280'
+};
+
+const PIPELINE_COLORS = {
+  draft: COLORS.gray,
+  in_review: COLORS.warning,
+  approved: COLORS.info,
+  submitted: COLORS.blue,
+  won: COLORS.success,
+  lost: COLORS.danger
+};
+
+export default function DashboardPage() {
+  const router = useRouter();
+  const { user } = useAuth();
+  const { socket } = useWebSocket();
+  const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
+  const [dateRange, setDateRange] = useState({
+    start: new Date(new Date().setDate(new Date().getDate() - 30)).toISOString().split('T')[0],
+    end: new Date().toISOString().split('T')[0]
+  });
+
+  const { data: metrics, isLoading, error, refetch } = useQuery<DashboardMetrics>({
+    queryKey: ['dashboard-metrics', dateRange],
+    queryFn: async () => {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/dashboard?startDate=${dateRange.start}&endDate=${dateRange.end}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch dashboard metrics');
+      }
+      return response.json();
+    },
+    refetchInterval: 30000, // Refresh every 30 seconds
+  });
+
+  const { data: drillDownData } = useQuery({
+    queryKey: ['dashboard-drilldown', selectedMetric, dateRange],
+    queryFn: async () => {
+      if (!selectedMetric) return { data: [], total: 0 };
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/dashboard/drilldown/${selectedMetric}?startDate=${dateRange.start}&endDate=${dateRange.end}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch drill-down data');
+      }
+      return response.json();
+    },
+    enabled: !!selectedMetric,
+  });
+
+  // WebSocket real-time updates
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleRealtimeUpdate = (data: any) => {
+      if (data.type === 'dashboard_update') {
+        refetch();
+      }
+    };
+
+    socket.on('dashboard_update', handleRealtimeUpdate);
+
+    return () => {
+      socket.off('dashboard_update', handleRealtimeUpdate);
+    };
+  }, [socket, refetch]);
+
+  // KPI Cards configuration
+  const kpiCards: KPIData[] = [
+    {
+      title: 'Total Proposals',
+      value: metrics?.pipeline?.total || 0,
+      change: metrics?.pipeline?.total - 50, // Mock change calculation
+      changeType: 'increase',
+      icon: '📊',
+      color: 'bg-blue-500',
+      drillDownPath: '/dashboard/drilldown/proposals'
+    },
+    {
+      title: 'Submitted',
+      value: metrics?.pipeline?.submitted || 0,
+      change: metrics?.pipeline?.submitted - 30,
+      changeType: 'increase',
+      icon: '📤',
+      color: 'bg-green-500',
+      drillDownPath: '/dashboard/drilldown/submitted'
+    },
+    {
+      title: 'Win Rate',
+      value: `${metrics?.pipeline?.winRate || 0}%`,
+      change: metrics?.pipeline?.winRate - 65,
+      changeType: metrics?.pipeline?.winRate > 65 ? 'increase' : 'decrease',
+      icon: '🎯',
+      color: 'bg-purple-500',
+      drillDownPath: '/dashboard/drilldown/won'
+    },
+    {
+      title: 'Total Revenue',
+      value: `$${(metrics?.revenue?.totalRevenue || 0).toLocaleString()}`,
+      change: metrics?.revenue?.totalRevenue - 1000000,
+      changeType: 'increase',
+      icon: '💰',
+      color: 'bg-green-500',
+      drillDownPath: '/dashboard/drilldown/revenue'
+    },
+  ];
+
+  // Chart data preparation
+  const chartData: ChartData[] = [
+    { month: 'Jan', proposals: 45, revenue: 1200000, won: 15 },
+    { month: 'Feb', proposals: 52, revenue: 1500000, won: 18 },
+    { month: 'Mar', proposals: 38, revenue: 980000, won: 12 },
+    { month: 'Apr', proposals: 65, revenue: 2100000, won: 22 },
+    { month: 'May', proposals: 58, revenue: 1750000, won: 19 },
+    { month: 'Jun', proposals: 72, revenue: 2400000, won: 25 },
+  ];
+
+  // Role-based dashboard customization
+  const getRoleBasedConfig = () => {
+    const role = user?.role?.toLowerCase();
+
+    switch (role) {
+      case 'admin':
+      case 'gm':
+        return {
+          showAllMetrics: true,
+          showRevenueCharts: true,
+          showTeamPerformance: true,
+          showAllProposals: true
+        };
+
+      case 'sales_manager':
+        return {
+          showAllMetrics: true,
+          showRevenueCharts: true,
+          showTeamPerformance: false,
+          showAllProposals: true
+        };
+
+      case 'bs_manager':
+        return {
+          showAllMetrics: true,
+          showRevenueCharts: false,
+          showTeamPerformance: true,
+          showAllProposals: false
+        };
+
+      case 'po':
+      case 'pm':
+        return {
+          showAllMetrics: false,
+          showRevenueCharts: false,
+          showTeamPerformance: false,
+          showAllProposals: true
+        };
+
+      default:
+        return {
+          showAllMetrics: false,
+          showRevenueCharts: false,
+          showTeamPerformance: false,
+          showAllProposals: true
+        };
+    }
+  };
+
+  const roleConfig = getRoleBasedConfig();
+
+  const handleKPIDrillDown = (kpi: KPIData) => {
+    if (kpi.drillDownPath) {
+      setSelectedMetric(kpi.drillDownPath);
+      router.push(kpi.drillDownPath);
+    }
+  };
+
+  const handleDateRangeChange = (newRange: { start: string; end: string }) => {
+    setDateRange(newRange);
+  };
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-500 mb-4"></div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Loading Dashboard
+            </h2>
+            <p className="text-gray-600">Fetching your metrics...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-red-500 text-6xl mb-4">⚠️</div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Error Loading Dashboard
+            </h2>
+            <p className="text-gray-600">Please try again later</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gray-50"
+      >
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-6">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  {roleConfig.showAllMetrics ? 'Enterprise Dashboard' : `${user?.role?.charAt(0).toUpperCase()}${user?.role?.slice(1)} Dashboard`}
+                </h1>
+                <p className="text-sm text-gray-500 mt-1">
+                  Real-time proposal management insights
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                {/* Date Range Selector */}
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="date"
+                    value={dateRange.start}
+                    onChange={(e) => handleDateRangeChange({ ...dateRange, start: e.target.value })}
+                    className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <span className="text-gray-500">to</span>
+                  <input
+                    type="date"
+                    value={dateRange.end}
+                    onChange={(e) => handleDateRangeChange({ ...dateRange, end: e.target.value })}
+                    className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                {/* WPS Indicator */}
+                <div className="flex items-center space-x-2 px-3 py-2 bg-gray-100 rounded-lg">
+                  <div className="text-sm font-medium text-gray-700">WPS</div>
+                  <div className={`text-sm font-bold ${
+                    metrics?.wps < 50 ? 'text-green-600' :
+                    metrics?.wps < 80 ? 'text-yellow-600' : 'text-red-600'
+                  }`}>
+                    {metrics?.wps || 0}/{95}
+                  </div>
+                </div>
+
+                {/* Status Indicator */}
+                <div className="flex items-center space-x-2 px-3 py-2 bg-green-100 rounded-lg">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-sm font-medium text-green-800">Real-time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* KPI Cards */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {kpiCards.map((kpi, index) => (
+              <motion.div
+                key={kpi.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => handleKPIDrillDown(kpi)}
+                className="cursor-pointer"
+              >
+                <KPICard
+                  title={kpi.title}
+                  value={kpi.value}
+                  change={kpi.change}
+                  changeType={kpi.changeType}
+                  icon={kpi.icon}
+                  color={kpi.color}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Charts Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Pipeline & Funnel */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg shadow p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Pipeline & Funnel</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-700 mb-3">Pipeline</h3>
+                    <ResponsiveContainer width="100%" height={250}>
+                      <BarChart data={metrics?.pipeline || {}} title="Proposals">
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="status" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="total" fill={COLORS[PIPELINE_COLORS.draft]} />
+                        <Bar dataKey="submitted" fill={COLORS[PIPELINE_COLORS.submitted]} />
+                        <Bar dataKey="won" fill={COLORS[PIPELINE_COLORS.won]} />
+                        <Bar dataKey="lost" fill={COLORS[PIPELINE_COLORS.lost]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-700 mb-3">Funnel</h3>
+                    <ResponsiveContainer width="100%" height={250}>
+                      <FunnelChart data={metrics?.funnel || []}>
+                        <Tooltip />
+                        <Legend />
+                        <Funnel
+                          dataKey="count"
+                          fill={COLORS.primary}
+                        />
+                      </FunnelChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Revenue Trend */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg shadow p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Revenue Trend</h2>
+                <ResponsiveContainer width="100%" height={250}>
+                  <AreaChart data={chartData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
+                    <Legend />
+                    <Area type="monotone" dataKey="revenue" stroke={COLORS.success} fill={COLORS.success} />
+                    <Area type="monotone" dataKey="revenue" stroke={COLORS.info} fill={COLORS.info} />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* Team Performance (if enabled) */}
+          {(roleConfig.showTeamPerformance || user?.role === 'bs_manager') && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg shadow p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Team Performance</h2>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={metrics?.teamPerformance || []}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="role" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="totalProposals" fill={COLORS.blue} />
+                    <Bar dataKey="wonProposals" fill={COLORS.success} />
+                    <Bar dataKey="avgCompliance" fill={COLORS.warning} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          )}
+
+          {/* Quick Actions */}
+          <div className="space-y-6">
+            <QuickActions user={user} />
+          </div>
+
+          {/* Recent Activity (if enabled) */}
+          {(roleConfig.showAllProposals || !user?.role || user?.role === 'admin') && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg shadow p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h2>
+                <RecentActivity limit={5} />
+              </div>
+            </div>
+          )}
+
+          {/* Proposal Table (if enabled) */}
+          {(roleConfig.showAllProposals || (user?.role !== 'po' && user?.role !== 'pm')) && (
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg shadow p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Proposals</h2>
+                <ProposalTable limit={10} />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Drill-down Modal */}
+        {selectedMetric && drillDownData.data && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setSelectedMetric(null);
+                router.back();
+              }
+            }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          >
+            <div className="bg-white rounded-lg shadow-xl p-6 max-w-6xl w-full max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-lg font-bold text-gray-900">
+                  {selectedMetric?.replace('/dashboard/drilldown/', '').replace('/', ' ').replace('-', ' ').toUpperCase()} Details
+                </h3>
+                <button
+                  onClick={() => {
+                    setSelectedMetric(null);
+                    router.back();
+                  }}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div className="text-sm text-gray-500">
+                  Total Records: {drillDownData?.total || 0}
+                </div>
+
+                <div className="overflow-x-auto">
+                  {drillDownData.data?.length > 0 ? (
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead>
+                        <tr>
+                          {/* Table headers based on metric type */}
+                          {selectedMetric === 'proposals' && (
+                            <>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Client</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                            </>
+                          )}
+
+                          {selectedMetric === 'revenue' && (
+                            <>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Proposal</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Revenue</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                            </>
+                          )}
+
+                          {selectedMetric === 'won' && (
+                            <>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Proposal</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Revenue</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                            </>
+                          )}
+
+                          {!['proposals', 'revenue', 'won', 'lost'].includes(selectedMetric?.replace('/dashboard/drilldown/', '').replace('/', '-')) && (
+                            <>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Details</th>
+                            </>
+                          )}
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {drillDownData.data.map((item: any, index: number) => (
+                          <tr key={index} className="hover:bg-gray-50">
+                            {selectedMetric === 'proposals' && (
+                              <>
+                                <td className="px-4 py-2 text-sm text-gray-900">{item.id}</td>
+                                <td className="px-4 py-2 text-sm text-gray-900">{item.proposalTitle}</td>
+                                <td className="px-4 py-2 text-sm text-gray-900">{item.clientName}</td>
+                                <td className="px-4 py-2 text-sm">
+                                  <span className={`px-2 py-1 text-xs rounded-full ${
+                                    item.status === 'won' ? 'bg-green-100 text-green-800' :
+                                    item.status === 'lost' ? 'bg-red-100 text-red-800' :
+                                    'bg-blue-100 text-blue-800'
+                                  }`}>
+                                    {item.status}
+                                  </span>
+                                </td>
+                                <td className="px-4 py-2 text-sm text-gray-900">
+                                  {new Date(item.createdAt).toLocaleDateString()}
+                                </td>
+                              </>
+                            )}
+
+                            {selectedMetric === 'revenue' && (
+                              <>
+                                <td className="px-4 py-2 text-sm text-gray-900">{item.title}</td>
+                                <td className="px-4 py-2 text-sm text-gray-900">
+                                  ${item.estimatedValue ? `$${item.estimatedValue.toLocaleString()}` : 'N/A'}
+                                </td>
+                                <td className="px-4 py-2 text-sm text-gray-900">
+                                  {new Date(item.createdAt).toLocaleDateString()}
+                                </td>
+                              </>
+                            )}
+
+                            {selectedMetric === 'won' && (
+                              <>
+                                <td className="px-4 py-2 text-sm text-gray-900">{item.title}</td>
+                                <td className="px-4 py-2 text-sm text-gray-900">
+                                  ${item.estimatedValue ? `$${item.estimatedValue.toLocaleString()}` : 'N/A'}
+                                </td>
+                                <td className="px-4 py-2 text-sm text-gray-900">
+                                  {new Date(item.submittedAt).toLocaleDateString()}
+                                </td>
+                              </>
+                            )}
+
+                            {(!['proposals', 'revenue', 'won', 'lost'].includes(selectedMetric?.replace('/dashboard/drilldown/', '').replace('/', '-')) && (
+                              <>
+                                <td className="px-4 py-2 text-sm text-gray-900">{item.id || item.title}</td>
+                                <td className="px-4 py-2 text-sm text-gray-900 text-wrap max-w-xs">
+                                  {item.description || 'N/A'}
+                                </td>
+                              </>
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Summary Statistics */}
+                  <div className="mt-4 grid grid-cols-3 gap-4">
+                    {drillDownData.data?.length > 0 && selectedMetric === 'proposals' && (
+                      <>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            {drillDownData.data.length}
+                          </div>
+                          <div className="text-sm text-gray-500">Total Proposals</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600">
+                            {drillDownData.data.filter(p => p.status === 'won').length}
+                          </div>
+                          <div className="text-sm text-gray-500">Won</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-red-600">
+                            {drillDownData.data.filter(p => p.status === 'lost').length}
+                          </div>
+                          <div className="text-sm text-gray-500">Lost</div>
+                        </div>
+                      </>
+                    )}
+
+                    {drillDownData.data?.length > 0 && selectedMetric === 'revenue' && (
+                      <>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            ${drillDownData.data.reduce((sum: any, item: any) => sum + (item.estimatedValue || 0), 0).toLocaleString()}
+                          </div>
+                          <div className="text-sm text-gray-500">Total Revenue</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            ${Math.round(drillDownData.data.reduce((sum: any, item: any) => sum + (item.estimatedValue || 0), 0) / drillDownData.data.length).toLocaleString()}
+                          </div>
+                          <div className="text-sm text-gray-500">Avg Revenue</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            {Math.max(...drillDownData.data.map((item: any) => item.estimatedValue || 0)).toLocaleString()}
+                          </div>
+                          <div className="text-sm text-gray-500">Max Revenue</div>
+                        </div>
+                      </>
+                    )}
+
+                    {drillDownData.data?.length > 0 && selectedMetric === 'won' && (
+                      <>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            {drillDownData.data.length}
+                          </div>
+                          <div className="text-sm text-gray-500">Total Won</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600">
+                            ${drillDownData.data.reduce((sum: any, item: any) => sum + (item.estimatedValue || 0), 0).toLocaleString()}
+                          </div>
+                          <div className="text-sm text-gray-500">Total Value</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-gray-900">
+                            {Math.round(drillDownData.data.reduce((sum: any, item: any) => sum + (item.estimatedValue || 0), 0) / drillDownData.data.length).toLocaleString()}
+                          </div>
+                          <div className="text-sm text-gray-500">Avg Value</div>
+                        </div>
+                      </>
+                    )}
+
+                    {!['proposals', 'revenue', 'won', 'lost'].includes(selectedMetric?.replace('/dashboard/drilldown/', '').replace('/', '-')) && (
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-gray-900">
+                          {drillDownData.data.length}
+                        </div>
+                        <div className="text-sm text-gray-500">Total Records</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </motion.div>
+    </Layout>
+  );
+}
+```
+
+### **5.5 Kanban Board Component (Bab 10)**
